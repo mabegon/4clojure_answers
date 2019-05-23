@@ -85,5 +85,24 @@
 
 (fn [a b] (take (- b a)  (iterate inc a)))
 
-;; #35 Local bindings
+;; #38 Maximum value
 
+(fn [& args] (first (sort > (mapcat (fn [a] (list (identity a))) args))))
+
+
+;; #39 Interleave Two Seqs
+
+(fn [in1 in2]
+    (mapcat (fn [a b] (list a b))
+            in1 in2
+            )
+    )
+
+;; # 40 Interpose a Seq
+
+(fn [del ins]
+    (cons
+      (first ins)
+      (mapcat (fn [a] (list del a)) (rest ins) )
+      )
+    )
